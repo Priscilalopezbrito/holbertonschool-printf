@@ -28,6 +28,10 @@ int print_string(va_list args)/*cantidad dentro de char */
 		_putchar(_string[le]);
 		le++;
 	}
+	else
+	{
+		return (NULL);
+	}
 	return (le);/*returns number of char*/
 }
 
