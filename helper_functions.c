@@ -16,7 +16,7 @@ int print_char(va_list args)
 /**
  * print_string- handle string
  * @args: va list
- * Return: number of char
+ * Return: length char
  */
 int print_string(va_list args)/*count char */
 {
@@ -36,14 +36,6 @@ int print_string(va_list args)/*count char */
 	return (le);
 }
 
-
-
-
-
-
-
-
-
 /**
  * print_i_d- handle %i %d
  * @args: va list
@@ -52,56 +44,46 @@ int print_string(va_list args)/*count char */
 int print_i_d(va_list args)
 {
 	int num = va_arg(args, int);
-	int counter = 0;
+	int counter = 0;/*count*/
 	int div = 1;
-	int temp;
-	int min_uf = 0;
+	int temp;/*used to save num value*/
+	int min_uf = 0;/*use to handle INT_MIN special case*/
 
-	if (num < 0)
+	if (num < 0)/*negative numbers case*/
 	{
-		_putchar('-');
+		_putchar('-');/*minus char*/
 		counter++;
-		if (num == INT_MIN)
+		if (num == INT_MIN)/*prevent underflow*/
 		{
-			num = -(num + 1);
+			num = -(num + 1);/*-2147483647 - 1*/
 			min_uf = 1;
 		}
 		else
 		{
-			num = -num;
+			num = -num;/*if not min just print - num*/
 		}
 	}
-	temp = num;
-	while (temp / div >= 10)
+	temp = num;/*store value  in temp*/
+	/*size*/
+	while (temp / div >= 10)/*if num 10 or bigger*/
 	{
-		div *= 10;
+		div = div * 10;/*1 * 10*/
 	}
-	while (div != 0)
+	while (div != 0)/*print number*/
 	{
-	int digit = num / div;
-
+	int digit = num / div;/*current number to print*/
+/*modify last number from -2147483647 to -2147483648 */
 	if (min_uf && div == 1)
 	{
 		digit++;
 	}
-	_putchar('0' + digit);
-	num = num % div;
-	div = div / 10;
-	counter++;
+	_putchar('0' + digit);/*converts int to ASCII char*/
+	num = num % div;/*987 87 7*/
+	div = div / 10;/*1000 100 10*/
+	counter++;/*increment count*/
 	}
-return (counter);
+return (counter);/*count*/
 }
-
-
-
-
-
-
-
-
-
-
-
 
 /**
  * _putchar - writes the character c to stdout
