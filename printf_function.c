@@ -1,5 +1,5 @@
 #include "main.h"
-/*
+/**
  * _printf - Function produce output according to format
  *@format: Character string
  *Return: Number of characters printed
@@ -31,8 +31,10 @@ int _printf(const char *format, ...)
 					count = count + _putchar(format[i]);/**/
 				}
 				else
+				{
 					count = count + funcpoint(args);/**/
 					i++;
+				}
 			} /*Ends condition, if char is not fount in struct array...*/
 			else
 				count = count + _putchar('%');
