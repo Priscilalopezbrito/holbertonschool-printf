@@ -25,14 +25,14 @@ int _printf(const char *format, ...)
 				_putchar('%');
 				count++;
 			}
-			if (format[i] == '%')
+			else if (format[i] == '%')
 			{
 				count = count + _putchar('%');
 			}
 			else
 			{
 				/*calling get_op_function to evaluate format specifier*/
-				int (*funcpoint)(va_list) = get_fs_function(format[i/* + 1*/]);
+				int (*funcpoint)(va_list) = get_fs_function(format[i]);
 
 				if (funcpoint == NULL)/*{NULL, NULL}*/
 				{

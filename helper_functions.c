@@ -28,7 +28,7 @@ int print_string(va_list args)/*cantidad dentro de char */
 		_string = "(nil)";
 	}
 
-	if (_string[le] != '\0')
+	while (_string[le] != '\0')
 	{
 		_putchar(_string[le]);
 		le++;
@@ -43,8 +43,6 @@ int print_string(va_list args)/*cantidad dentro de char */
  */
 int print_i_d(va_list args)
 {
-	int max = INT_MAX;
-	int min = INT_MIN;
 	int num = va_arg(args, int);
 	int counter = 0;
 	int div = 1;
@@ -55,20 +53,21 @@ int print_i_d(va_list args)
 	 */
 	if (num < 0)
 	{
-		_putchar('-');/*Print char -*/
-		num = -num;
-		counter++;
+		if (num == INT_MIN)
+		{
+			_putchar('-');
+			_putchar('2');
+			num = 147483648;
+			counter = counter + 2;
+		}
+		else
+		{
+			_putchar('-');/*Print char -*/
+			num = -num;
+			counter++;
+		}
 	}
-	if (num < min || num > max)
-	{
-		return (-1);
-	}
-	/*
-	 * Extract and print digits
-	 *numbers equal or larger
-	 *than 10 or equal or smaller
-	 *than -10
-	 */
+	/* Extract and print digits*/
 	while (temp >= 10 || temp <= -10)
 	{
 		temp = temp / 10;/*extract last digit*/
