@@ -10,7 +10,7 @@ int print_char(va_list args)
 {
 	char _char = va_arg(args, int);
 
-	return (_putchar(_char)); /*count siempre sera 1*/
+	return (_putchar(_char)); /*count is always 1 */
 }
 
 /**
@@ -18,22 +18,22 @@ int print_char(va_list args)
  * @args: va list
  * Return: number of char
  */
-int print_string(va_list args)/*cantidad dentro de char */
+int print_string(va_list args)/*count char */
 {
 	char *_string = va_arg(args, char *);
-	int le = 0;/*used to count*/
+	int le = 0;/*le used to count length*/
 
-	if (_string == NULL)
+	if (_string == NULL)/*if string is null print (null)*/
 	{
 		_string = "(null)";
 	}
 
-	while (_string[le] != '\0')
+	while (_string[le] != '\0')/*returns number of char*/
 	{
 		_putchar(_string[le]);
 		le++;
 	}
-	return (le);/*returns number of char*/
+	return (le);
 }
 
 /**
@@ -44,24 +44,24 @@ int print_string(va_list args)/*cantidad dentro de char */
 int print_i_d(va_list args)
 {
 	int num = va_arg(args, int);
-	int counter = 0;
-	int div = 1;
-	int temp;
+	int counter = 0;/*count*/
+	int div = 1;/*divisor*/
+	int temp;/*store num info*/
 
-	if (num < 0)/*-numbers*/
+	if (num < 0)/*handle negative numbers*/
 	{
-		_putchar('-'); /*Print - sign*/
+		_putchar('-'); /*Print '-' sign*/
 		counter++;
-		if (num == INT_MIN)
+		if (num == INT_MIN)/*-2147483647 - 1*/
 		{
 			num = -(num + 1); /* Convert to + and add 1 for overflow*/
-			temp = num;
-			while (temp >= 10)/*check divisor*/
+			temp = num;/*stores num in temp*/
+			while (temp >= 10)/*check divisor to determine length*/
 			{
-				temp = temp / 10;
-				div = div * 10;
+				temp = temp / 10;/*10/10 = 1*/
+				div = div * 10;/* 1 * 10 = 10*/
 			}
-			while (div != 0)/*prints digits*/
+			while (div != 0)/*prints digits 64-76*/
 			{
 				int digit = num / div;
 
@@ -77,10 +77,10 @@ int print_i_d(va_list args)
 			return (counter);
 		}
 		else
-			num = -num; /* Convert to positive*/
+			num = -num; /*number = -number*/
 	}
 	temp = num;
-	while (temp >= 10)/*divisor*/
+	while (temp >= 10)/**/
 	{
 		temp = temp / 10;
 		div = div * 10;

@@ -27,7 +27,7 @@ int _printf(const char *format, ...)
 				va_end(args);
 				return (count);
 			}
-			else if (format[i] == '%')
+			if (format[i] == '%')
 			{
 				count = count + _putchar('%');
 			}
