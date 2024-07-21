@@ -4,7 +4,6 @@
 
 int _printf(const char *format, ...);
 
-
 int (*get_fs_function(char s))(va_list);
 
 /**
@@ -28,3 +27,4 @@ int print_i_d(va_list);
 int _putchar(char c);
 
 #endif
+
