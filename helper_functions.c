@@ -23,14 +23,14 @@ int print_string(va_list args)/*cantidad dentro de char */
 	char *_string = va_arg(args, char *);
 	int le = 0;/*used to count*/
 
-	while (_string[le] != '\0')
+	if (_string[le] != '\0')
 	{
 		_putchar(_string[le]);
 		le++;
 	}
 	else
 	{
-		return (NULL);
+		return ('\0');
 	}
 	return (le);/*returns number of char*/
 }
