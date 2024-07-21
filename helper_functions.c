@@ -23,14 +23,15 @@ int print_string(va_list args)/*cantidad dentro de char */
 	char *_string = va_arg(args, char *);
 	int le = 0;/*used to count*/
 
+	if (_string == NULL)
+	{
+		_string = "(nil)";
+	}
+
 	if (_string[le] != '\0')
 	{
 		_putchar(_string[le]);
 		le++;
-	}
-	else
-	{
-		return ('\0');
 	}
 	return (le);/*returns number of char*/
 }
@@ -42,15 +43,12 @@ int print_string(va_list args)/*cantidad dentro de char */
  */
 int print_i_d(va_list args)
 {
-
 	int max = INT_MAX;
 	int min = INT_MIN;
 	int num = va_arg(args, int);
 	int counter = 0;
 	int div = 1;
 	int temp = num;
-	
-
 	/*
 	 * Condition to handle
 	 * negative numbers
