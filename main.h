@@ -2,6 +2,8 @@
 #define P
 #include <stdarg.h>
 #include <stddef.h>
+#include <limits.h>
+#include <unistd.h>
 
 int _printf(const char *format, ...);
 

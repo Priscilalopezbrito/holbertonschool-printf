@@ -1,8 +1,6 @@
 #include "main.h"
 #include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-
+#include <limits.h>
 /**
  * print_char- executes char
  * @args: va list
@@ -47,13 +45,8 @@ int print_i_d(va_list args)
 	int counter = 0;
 	int div = 1;
 	int temp = num;
+	
 
-
-	/*handle numbers that excedes limits*/
-	if (num > min  || num < max)
-	{
-		return (num);
-	}
 	/*
 	 * Condition to handle
 	 * negative numbers
@@ -64,7 +57,10 @@ int print_i_d(va_list args)
 		num = -num;
 		counter++;
 	}
-
+	if (num < min || num > max)
+	{
+		return (-1);
+	}
 	/*
 	 * Extract and print digits
 	 *numbers equal or larger
