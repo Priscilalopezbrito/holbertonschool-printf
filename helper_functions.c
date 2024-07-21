@@ -25,7 +25,7 @@ int print_string(va_list args)/*cantidad dentro de char */
 
 	if (_string == NULL)
 	{
-		_string = "(nil)";
+		_string = "(null)";
 	}
 
 	while (_string[le] != '\0')
@@ -46,46 +46,56 @@ int print_i_d(va_list args)
 	int num = va_arg(args, int);
 	int counter = 0;
 	int div = 1;
-	int temp = num;
-	/*
-	 * Condition to handle
-	 * negative numbers
-	 */
-	if (num < 0)
+	int temp;
+
+	if (num < 0)/*-numbers*/
 	{
+		_putchar('-'); /*Print - sign*/
+		counter++;
 		if (num == INT_MIN)
 		{
-			_putchar('-');
-			_putchar('2');
-			num = 147483648;
-			counter = counter + 2;
+			num = -(num + 1); /* Convert to + and add 1 for overflow*/
+			temp = num;
+			while (temp >= 10)/*check divisor*/
+			{
+				temp = temp / 10;
+				div = div * 10;
+			}
+			while (div != 0)/*prints digits*/
+			{
+				int digit = num / div;
+
+				if (div == 1)/*last num print correct*/
+				{
+					digit++;
+				}
+				_putchar('0' + digit);
+				num = num % div;
+				div = div / 10;
+				counter++;
+			}
+			return (counter);
 		}
 		else
-		{
-			_putchar('-');/*Print char -*/
-			num = -num;
-			counter++;
-		}
+			num = -num; /* Convert to positive*/
 	}
-	/* Extract and print digits*/
-	while (temp >= 10 || temp <= -10)
+	temp = num;
+	while (temp >= 10)/*divisor*/
 	{
-		temp = temp / 10;/*extract last digit*/
-		div = div * 10;/*10 100 1000 10000*/
+		temp = temp / 10;
+		div = div * 10;
 	}
-	while (div != 0)/*while divisor is not 0*/
+	while (div != 0)/*print digit 1 by 1*/
 	{
-		int digit;
+		int digit = num / div;
 
-		digit = num / div; /*gets first num ->1 23 */
-		_putchar('0' + digit);/*digit is printed 1 */
-		num = num % div;/*extract first example 123 to 23*/
-		div = div / 10;/*1000 100 10*/
-		counter++;/*increment*/
+		_putchar('0' + digit);
+		num = num % div;
+		div = div / 10;
+		counter++;
 	}
-	return (counter);/*number of digits*/
+	return (counter); /* Number of digits printed*/
 }
-
 
 /**
  * _putchar - writes the character c to stdout

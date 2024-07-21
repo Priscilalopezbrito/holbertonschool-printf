@@ -24,6 +24,8 @@ int _printf(const char *format, ...)
 			{
 				_putchar('%');
 				count++;
+				va_end(args);
+				return (count);
 			}
 			else if (format[i] == '%')
 			{
@@ -40,14 +42,10 @@ int _printf(const char *format, ...)
 					count = count + _putchar(format[i]);/**/
 				}
 				else
-				{
 					count = count + funcpoint(args);/**/
-				}
 			} /*Ends condition, if char is not fount in struct array...*/
-		}else
-			{
+		} else
 				count = count + _putchar(format[i]);
-			}
 	} /*Ends for loop scope */
 	va_end(args);
 	return (count);/*Returns: the number of characters printed*/
