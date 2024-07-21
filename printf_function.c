@@ -1,8 +1,8 @@
 #include "main.h"
 #include <stdarg.h>
 #include <stddef.h>
-#include <stdio>
-#include <stdlib>
+#include <stdio.h>
+#include <stdlib.h>
 /**
  * _printf - Function produce output according to format
  *@format: Character string
