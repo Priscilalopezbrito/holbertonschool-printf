@@ -41,17 +41,18 @@ int print_string(va_list args)/*cantidad dentro de char */
 int print_i_d(va_list args)
 {
 
-	int max = 2147483647;
-	int min = -2147483647 - 1;
+	int max = INT_MAX;
+	int min = INT_MIN;
 	int num = va_arg(args, int);
 	int counter = 0;
 	int div = 1;
 	int temp = num;
 
+
 	/*handle numbers that excedes limits*/
-	if (num < min || num > max)
+	if (num > min  || num < max)
 	{
-		return (-1);
+		return (num);
 	}
 	/*
 	 * Condition to handle
