@@ -36,6 +36,14 @@ int print_string(va_list args)/*count char */
 	return (le);
 }
 
+
+
+
+
+
+
+
+
 /**
  * print_i_d- handle %i %d
  * @args: va list
@@ -47,6 +55,7 @@ int print_i_d(va_list args)
 	int counter = 0;
 	int div = 1;
 	int temp;
+	int min_uf = 0;
 
 	if (num < 0)
 	{
@@ -55,6 +64,7 @@ int print_i_d(va_list args)
 		if (num == INT_MIN)
 		{
 			num = -(num + 1);
+			min_uf = 1;
 		}
 		else
 		{
@@ -62,22 +72,35 @@ int print_i_d(va_list args)
 		}
 	}
 	temp = num;
-	while (temp >= 10)
+	while (temp / div >= 10)
 	{
-		temp = temp / 10;
-		div = div * 10;
+		div *= 10;
 	}
 	while (div != 0)
 	{
-		int digit = num / div;
+	int digit = num / div;
 
-		_putchar('0' + digit);
-		num = num % div;
-		div = div / 10;
-		counter++;
+	if (min_uf && div == 1)
+	{
+		digit++;
 	}
-	return (counter);
+	_putchar('0' + digit);
+	num = num % div;
+	div = div / 10;
+	counter++;
+	}
+return (counter);
 }
+
+
+
+
+
+
+
+
+
+
 
 
 /**
